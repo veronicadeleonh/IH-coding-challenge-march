@@ -10,7 +10,6 @@ export default class SunPath extends Component {
      sunPathSerrekunda: {}
     };
 
-    
 
 getCaracasSP = () => {
     axios
@@ -31,7 +30,6 @@ getSerrekundaSP = () => {
     })
     .catch(error => console.log(error))
 }
-
 
 componentDidMount() {
     this.getCaracasSP();
