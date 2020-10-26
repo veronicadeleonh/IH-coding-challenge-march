@@ -1,37 +1,16 @@
-import React, { Component } from 'react';
-import axios from "axios"
+import React from 'react'
 
-export default class MoonPath extends Component {
+const MoonPath = (loading, citiesData) => {
 
-state = {
-    moonPathCaracas: {}
-}
-
-getMoonPathCaracas = () => {
-    axios
-    .get("http://api.wolframalpha.com/v2/query?appid=6TP376-VPK96VK7R8&input=moon&output=json&location=caracas")
-    .then(response => {
-        console.log("caracas moon", response.data.queryresult.pods[5].subpods[0])
-        this.setState({ moonPathCaracas: response.data.queryresult.pods[5].subpods[0].img})
-    })
-}
-
-componentDidMount () {
- this.getMoonPathCaracas()
-}
-
-    render() {
-
-        const caracasMP = this.state.moonPathCaracas
-
-        return (
-            <div>
-                <h3>{caracasMP.alt}</h3>
-                <img 
-                   src={caracasMP.src}
-                   alt={caracasMP.alt}
-                   />
-            </div>
-        )
+    if(loading) {
+        return <h2>Loading...</h2>
     }
+
+    return (
+        <div>
+            <h2>Moon Paths</h2>
+        </div>
+    )
 }
+
+export default MoonPath
