@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 
-const Home = ({ cities, setCities }) => {
+const Home = ({ cities, setCities, fetchMoonData, fetchSunData }) => {
 
     const [inputQuery, setInputQuery] = useState("")
 
@@ -16,7 +16,9 @@ const Home = ({ cities, setCities }) => {
 
     const addCityHandler = (event) => {
         setCities(cities => [...cities, inputQuery]) 
-        // console.log("cities", cities)  
+        // console.log("cities", cities)
+        fetchMoonData(inputQuery);
+        fetchSunData(inputQuery)  
     }
       console.log("cities", cities)
      // console.log("inputQuery", inputQuery)

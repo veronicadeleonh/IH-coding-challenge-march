@@ -11,8 +11,8 @@ const SunPath = ({ loading, sunData }) => {
     return (
         <>
             <h2>Sun Paths</h2>
-            {sunData.map(city => (
-                <div>
+            {sunData.map((city, index) => (
+                <div key={index.toString()}>
                 <h3>{city.title}</h3>
                 <img 
                     src={city.subpods[0].img.src} 
