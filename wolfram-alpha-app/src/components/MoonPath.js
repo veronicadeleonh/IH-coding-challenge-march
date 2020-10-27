@@ -11,8 +11,8 @@ const MoonPath = ({ loading, moonData }) => {
     return (
         <>
             <h2>Moon Paths</h2>
-            {moonData.map(city => (
-                <div>
+            {moonData.map((city, index) => (
+                <div key={index.toString()}>
                 <h3>{city.title}</h3>
                 <img 
                     src={city.subpods[0].img.src} 
