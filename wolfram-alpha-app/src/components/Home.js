@@ -2,24 +2,25 @@ import React, { useState} from 'react';
 import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 
-const Home = ( cities, setCities ) => {
+const Home = ({ cities, setCities }) => {
 
     const [inputQuery, setInputQuery] = useState("")
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log("event", event)
-    };
+    const handleSubmit = (event) => { event.preventDefault() }; 
     
-    const handleChange = (event) => {
-
+    const changeHandler = (event) => {
+        // console.log("value", event.target.value)
         setInputQuery(event.target.value);
+        console.log("input", inputQuery)  
+    };
 
-        console.log("input", inputQuery)
-        // setCities(cities.push(value)) 
-        // console.log("cities", cities)
-      };
-
+    const addCityHandler = (event) => {
+        setCities(cities => [...cities, inputQuery]) 
+        // console.log("cities", cities)  
+    }
+      console.log("cities", cities)
+     // console.log("inputQuery", inputQuery)
+      
     return (
         <div>
                 <Link to="/sunpath"><Button variant="warning">Sun</Button></Link>
@@ -37,7 +38,7 @@ const Home = ( cities, setCities ) => {
                         id="add"
                         name="add"
                         value={inputQuery}
-                        onChange={handleChange} 
+                        onChange={changeHandler}
                         placeholder="Example: Munich" />
 
                     <Form.Text className="text-muted">
@@ -48,7 +49,7 @@ const Home = ( cities, setCities ) => {
 
                     <Button 
                         variant="success" 
-                    //    onClick={addCityHandler}
+                        onClick={addCityHandler}
                         >
                         Add
                     </Button>

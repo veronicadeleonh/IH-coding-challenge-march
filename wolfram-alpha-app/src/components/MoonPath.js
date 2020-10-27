@@ -1,21 +1,26 @@
 import React from 'react'
 
-const MoonPath = ({ loading, MoonData }) => {
+const MoonPath = ({ loading, moonData }) => {
 
     if(loading) {
         return <h2>Loading...</h2>
     }
 
-    console.log("moonData", MoonData)
-
+    console.log("moonData", moonData)
 
     return (
-        <div>
+        <>
             <h2>Moon Paths</h2>
-            {/* {MoonData.map(city => (
-                <h3>{city.data.queryresults.pods[5].title}</h3>
-            ))} */}
-        </div>
+            {moonData.map(city => (
+                <div>
+                <h3>{city.title}</h3>
+                <img 
+                    src={city.subpods[0].img.src} 
+                    alt={city.subpods[0].img.alt} 
+                    />
+                </div>    
+            ))}
+        </>
     )
 }
 
